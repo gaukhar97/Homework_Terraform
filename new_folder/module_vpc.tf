@@ -1,5 +1,5 @@
 module "wordpress" {
-    source                      =   "/home/ec2-user/Homework_Terraform/HW_5"
+    source                      =   "/home/ec2-user/Homework_Terraform/HW_6"
     region                      =   "${var.region}"
     cidr_block                  =   "${var.cidr_block}"       
     public_cidr1                =   "${var.public_cidr1}"   

@@ -1,12 +1,12 @@
 resource "null_resource"  "commands" {
-    depends_on = ["aws_instance.Homework3"]
+    depends_on = ["aws_instance.VPC"]
     triggers = {
         always_run = "${timestamp()}"
     }
     # Push files  to remote server
     provisioner "file" {
         connection {
-        host = "${aws_instance.Homework3.public_ip}"
+        host = "${aws_instance.VPC.public_ip}"
         type = "ssh"
         user = "centos"
         private_key = "${file("~/.ssh/id_rsa")}"
@@ -17,7 +17,7 @@ resource "null_resource"  "commands" {
     # Execute linux commands on remote machine
     provisioner "remote-exec" {
         connection {
-        host = "${aws_instance.Homework3.public_ip}"
+        host = "${aws_instance.VPC.public_ip}"
         type = "ssh"
         user = "centos"
         private_key = "${file("~/.ssh/id_rsa")}"
